@@ -1,0 +1,39 @@
+.header-cmsf {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+  padding: 0.75rem 1.5rem;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+ 
+}
+
+
+.header-logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.75rem;
+  border-radius: 50%;
+  object-fit: cover; /* recorta la imagen para que se vea bien dentro del círculo */
+}
+
+
+.header-logo h1 {
+  font-size: 1.2rem;
+}
+
+.header-nav a {
+  margin-left: 1rem;
+  color: var(--cmsf-blanco);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header-nav a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,30 @@
+.canje-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  background-color: var(--cmsf-blanco);
+}
+
+.canje-card {
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(46, 125, 50, 0.2);
+}
+
+.canje-titulo {
+  color: var(--cmsf-verde);
+  margin-bottom: 1rem;
+}
+
+.canje-saldo {
+  font-size: 1.2rem;
+  color: var(--cmsf-verde-claro);
+  margin-bottom: 1.5rem;
+}
+
+.btn-cmsf {
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+}

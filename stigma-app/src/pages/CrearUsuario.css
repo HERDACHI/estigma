@@ -1,0 +1,37 @@
+.form-actions {
+  display: flex;
+  flex-direction: column;   /* 👈 ahora se apilan verticalmente */
+  align-items: center;      /* 👈 centrados horizontalmente */
+  gap: 1rem;                /* 👈 espacio entre botones */
+  margin-top: 2rem;         /* 👈 separación respecto al formulario */
+}
+
+.guardar-btn,
+.cancelar-btn {
+  min-width: 150px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+
+/* Botón Guardar */
+.guardar-btn {
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+}
+
+.guardar-btn:hover {
+  background-color: #256628;
+}
+
+/* Botón Cancelar */
+.cancelar-btn {
+  background-color: #ccc;
+  color: #000;
+}
+
+.cancelar-btn:hover {
+  background-color: #999;
+}

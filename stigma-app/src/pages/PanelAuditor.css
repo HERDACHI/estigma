@@ -1,0 +1,59 @@
+.auditor-panel-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: var(--cmsf-gris);
+  padding: 2rem;
+}
+
+.auditor-panel-card {
+  background-color: var(--cmsf-blanco);
+  border: 3px solid var(--cmsf-verde); /* borde institucional */
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.auditor-panel-title {
+  text-align: center;
+  color: var(--cmsf-verde);
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.auditor-filter {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.auditor-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.auditor-table th,
+.auditor-table td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.auditor-table th {
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+}
+
+.auditor-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.auditor-table tr:hover {
+  background-color: #eef;
+}

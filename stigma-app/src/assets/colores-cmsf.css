@@ -1,0 +1,25 @@
+:root {
+  --cmsf-verde: #2E7D32;
+  --cmsf-verde-claro: #A5D6A7;
+  --cmsf-blanco: #FFFFFF;
+  --cmsf-gris: #F5F5F5;
+  --cmsf-acento: #A5D6A7; /* verde claro para botones */
+}
+
+
+body {
+  background-color: var(--cmsf-blanco);
+  color: var(--cmsf-verde);
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn-cmsf {
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+  border-radius: 8px;
+}
+
+.card-cmsf {
+  border: 1px solid var(--cmsf-verde);
+  background-color: var(--cmsf-acento);
+}

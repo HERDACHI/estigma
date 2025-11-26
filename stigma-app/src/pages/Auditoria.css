@@ -1,0 +1,69 @@
+.page-card {
+  background-color: var(--cmsf-blanco);
+  border: 3px solid var(--cmsf-verde);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.page-card h2 {
+  color: var(--cmsf-verde);
+  margin-bottom: 1rem;
+}
+
+.page-card input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.auditoria-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.auditoria-table th,
+.auditoria-table td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+}
+
+.auditoria-table th {
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+}
+
+.auditoria-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+
+
+.auditoria-actions {
+  display: flex;
+  justify-content: center;   /* centra los botones en el contenedor */
+  gap: 2rem;                 /* espacio simétrico entre ellos */
+  margin-top: 1.5rem;        /* separación respecto a la tabla */
+}
+
+.gestion-btn {
+  padding: 0.75rem 1.25rem;
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 180px;          /* ancho mínimo para que ambos se vean iguales */
+  text-align: center;
+}
+
+.gestion-btn:hover {
+  background-color: #256628;
+}

@@ -1,0 +1,74 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Tipografía global */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--cmsf-blanco);
+  color: var(--cmsf-verde);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Contenedor principal */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Área principal */
+.app-main {
+  flex: 1;
+  padding: 1rem;
+}
+
+/* Encabezados */
+h1, h2, h3, h4, h5 {
+  color: var(--cmsf-verde);
+  margin-bottom: 0.75rem;
+}
+
+/* Botones globales */
+button, .btn-cmsf {
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, .btn-cmsf:hover {
+  background-color: var(--cmsf-verde-claro);
+}
+
+/* Links */
+a {
+  color: var(--cmsf-verde);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Layout móvil */
+@media (max-width: 600px) {
+  .app-main {
+    padding: 0.5rem;
+  }
+
+  button, .btn-cmsf {
+    width: 100%;
+    font-size: 1rem;
+  }
+}

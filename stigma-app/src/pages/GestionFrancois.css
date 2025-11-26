@@ -1,0 +1,31 @@
+.gestion-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+.gestion-form label {
+  font-weight: bold;
+  color: var(--cmsf-verde);
+}
+
+.gestion-form input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.gestion-form button {
+  padding: 0.75rem;
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.gestion-form button:hover {
+  background-color: #256628;
+}

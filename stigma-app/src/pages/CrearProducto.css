@@ -1,0 +1,55 @@
+.crear-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+.crear-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: var(--cmsf-verde);
+}
+
+.crear-form input[type="text"],
+.crear-form input[type="number"],
+.crear-form input[type="file"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.checkbox-label {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.file-btn,
+.crear-form button {
+ /* padding: 0.75rem;*/
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 200px;              /* 👈 mismo ancho para ambos */
+  padding: 0.6rem 1rem;      /* 👈 más compacto */
+  font-size: 1rem;           /* 👈 mismo tamaño de texto */
+  height: 40px;            
+
+}
+
+.crear-form button:hover {
+  background-color: #256628;
+}
+
+/* Contenedor para centrar los botones */
+.botones-container {
+  display: flex;
+  justify-content: center;   /* 👈 centra horizontalmente */
+  gap: 1rem;                 /* 👈 espacio entre botones */
+  margin-top: 1.5rem;
+}

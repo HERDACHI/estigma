@@ -1,0 +1,80 @@
+.page-card {
+  background-color: var(--cmsf-blanco);
+  border: 3px solid var(--cmsf-verde);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.page-card h2 {
+  color: var(--cmsf-verde);
+  margin-bottom: 1rem;
+}
+
+.productos-form {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.productos-form input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.productos-form button {
+  padding: 0.75rem 1rem;
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.productos-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.productos-table th,
+.productos-table td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+}
+
+.productos-table th {
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+}
+
+.productos-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+
+.productos-actions {
+  display: flex;
+  justify-content: center;   /* 👈 centrado simétrico */
+  margin-top: 1.5rem;        /* separación respecto a la tabla */
+}
+
+.productos-agregar-btn {
+  padding: 0.75rem 1.25rem;
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 180px;
+}
+
+.productos-agregar-btn:hover {
+  background-color: #256628;
+}

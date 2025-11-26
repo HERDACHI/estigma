@@ -1,0 +1,43 @@
+.usuarios-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.usuarios-form input,
+.usuarios-form select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.usuarios-form button {
+  padding: 0.5rem 1rem;
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.usuarios-form button:hover {
+  background-color: #256628;
+}
+
+.usuarios-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.usuarios-table th,
+.usuarios-table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.usuarios-table th {
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+}

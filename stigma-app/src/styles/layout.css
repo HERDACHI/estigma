@@ -1,0 +1,61 @@
+/* Layout general */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--cmsf-blanco);
+}
+
+/* Área principal */
+.app-main {
+  flex: 1;
+  padding: 1rem;
+}
+
+/* Header fijo */
+.header-cmsf {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Footer fijo */
+.footer-cmsf {
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+}
+
+/* Tarjetas (perfil, productos, confirmación) */
+.card-cmsf {
+  background-color: var(--cmsf-gris);
+  border-left: 5px solid var(--cmsf-verde);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(46, 125, 50, 0.2);
+}
+
+/* Botones grandes para móviles */
+.btn-cmsf {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+  .app-main {
+    padding: 0.5rem;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.2rem;
+  }
+
+  .card-cmsf {
+    padding: 0.75rem;
+  }
+}

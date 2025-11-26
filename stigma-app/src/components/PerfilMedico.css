@@ -1,0 +1,63 @@
+.perfil-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: var(--cmsf-blanco);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(46, 125, 50, 0.2);
+}
+
+.perfil-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.perfil-foto {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--cmsf-verde);
+  margin-right: 1rem;
+}
+
+.perfil-info h2 {
+  margin: 0;
+  color: var(--cmsf-verde);
+}
+
+.perfil-especialidad {
+  font-style: italic;
+  color: var(--cmsf-verde-claro);
+}
+
+.perfil-francoins {
+  font-weight: bold;
+  color: var(--cmsf-verde);
+}
+
+.perfil-actividad {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.actividad-titulo {
+  color: var(--cmsf-verde);
+  margin-bottom: 0.5rem;
+}
+
+.actividad-lista {
+  list-style: none;
+  padding: 0;
+}
+
+.actividad-lista li {
+  margin: 0.3rem 0;
+  color: var(--cmsf-verde);
+}
+
+.perfil-actions {
+  margin-top: 1.5rem;
+  text-align: center;
+}
