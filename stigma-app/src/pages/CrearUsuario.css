@@ -1,14 +1,72 @@
+/* Contenedor del formulario */
+.usuarios-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;           /* 👈 espacio entre grupos */
+  max-width: 500px;
+  margin: 0 auto;        /* 👈 centra el formulario */
+}
+
+/* Cada grupo de campo */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* Checkbox alineado */
+.checkbox-group {
+  flex-direction: row;
+  align-items: center;
+}
+
+.checkbox-group label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+/* Vista previa de la foto */
+.preview-box {
+  margin-top: 0.5rem;
+  border: 1px dashed var(--cmsf-verde);
+  border-radius: 6px;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Botones */
 .form-actions {
   display: flex;
-  flex-direction: column;   /* 👈 ahora se apilan verticalmente */
-  align-items: center;      /* 👈 centrados horizontalmente */
-  gap: 1rem;                /* 👈 espacio entre botones */
-  margin-top: 2rem;         /* 👈 separación respecto al formulario */
+  justify-content: center;   /* 👈 centrados */
+  gap: 1rem;                 /* 👈 espacio entre botones */
+  margin-top: 2rem;
 }
 
 .guardar-btn,
 .cancelar-btn {
-  min-width: 150px;
+  min-width: 140px;
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
   font-weight: bold;
@@ -35,3 +93,4 @@
 .cancelar-btn:hover {
   background-color: #999;
 }
+

@@ -1,7 +1,7 @@
 // src/pages/CrearUsuario.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Usuarios.css";
+import "./CrearUsuario.css";
 
 function CrearUsuario() {
   const [usuario, setUsuario] = useState({
@@ -41,26 +41,29 @@ function CrearUsuario() {
     <div className="page-card">
       <h2>Crear Usuario</h2>
       <form onSubmit={handleSubmit} className="usuarios-form">
-        <label>
-          Nombre:
+        
+        <div className="form-group">
+          <label>Nombre:</label>
           <input
             type="text"
             name="nombre"
             value={usuario.nombre}
             onChange={handleChange}
           />
-        </label>
-        <label>
-          Cédula/ID:
+        </div>
+
+        <div className="form-group">
+          <label>Cédula/ID:</label>
           <input
             type="text"
             name="cedula"
             value={usuario.cedula}
             onChange={handleChange}
           />
-        </label>
-        <label>
-          Tipo de Usuario:
+        </div>
+
+        <div className="form-group">
+          <label>Tipo de Usuario:</label>
           <select name="tipo" value={usuario.tipo} onChange={handleChange}>
             {tiposDisponibles.map((tipo) => (
               <option key={tipo} value={tipo}>
@@ -68,28 +71,30 @@ function CrearUsuario() {
               </option>
             ))}
           </select>
-        </label>
-        <label className="checkbox-label">
-          Activo:
-          <input
-            type="checkbox"
-            name="activo"
-            checked={usuario.activo}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Foto:
+        </div>
+
+        <div className="form-group checkbox-group">
+          
+        </div>
+
+        <div className="form-group">
+          <label>Foto:</label>
           <input type="file" name="foto" accept="image/*" onChange={handleChange} />
-        </label>
+        </div>
+
         {preview && (
           <div className="preview-box">
             <img src={preview} alt="Vista previa" />
           </div>
         )}
+
         <div className="form-actions">
           <button type="submit" className="guardar-btn">Guardar</button>
-          <button type="button" className="cancelar-btn" onClick={() => navigate("/gestion-usuarios")}>
+          <button
+            type="button"
+            className="cancelar-btn"
+            onClick={() => navigate("/gestion-usuarios")}
+          >
             Cancelar
           </button>
         </div>
@@ -99,3 +104,4 @@ function CrearUsuario() {
 }
 
 export default CrearUsuario;
+
