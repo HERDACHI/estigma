@@ -8,7 +8,7 @@ import Usuarios from './pages/Usuarios';
 import Productos from './pages/Productos';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import CrearProducto from './pages/CrearProducto'; 
+import CrearProducto from './pages/CrearProducto';
 import GestionFrancois from './pages/GestionFrancois';
 import GestionServicios from './pages/GestionServicios';
 import EditarProducto from './pages/EditarProducto';
@@ -28,18 +28,15 @@ function App() {
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/catalogo" element={<Catalogo />} />
             <Route path="/canje-exitoso" element={<CanjeExitoso />} />
-
-            {/* Nuevas ventanas acorde al Header */}
             <Route path="/auditoria" element={<Auditoria />} />
-           
             <Route path="/productos" element={<Productos />} />
-             <Route path="/productos/crear" element={<CrearProducto />} />
-             <Route path="/gestion-francois/:id" element={<GestionFrancois />} />
-             <Route path="/gestion-servicios/:id" element={<GestionServicios />} />
-             <Route path="/productos/editar/:id" element={<EditarProducto />} />
-             <Route path="/usuarios" element={<GestionUsuarios />} />
-             <Route path="/crear-usuario" element={<CrearUsuario />} />
-             
+            <Route path="/productos/crear" element={<CrearProducto />} />
+            <Route path="/productos/editar/:id" element={<EditarProducto />} />
+            <Route path="/gestion-francois/:id" element={<GestionFrancois />} />
+            <Route path="/gestion-servicios/:id" element={<GestionServicios />} />
+            <Route path="/usuarios" element={<GestionUsuarios />} />
+            <Route path="/crear-usuario" element={<CrearUsuario />} />
+
           </Routes>
         </main>
         <Footer />
