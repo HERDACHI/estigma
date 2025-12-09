@@ -1,6 +1,7 @@
 // src/pages/Auditoria.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import * as XLSX from "xlsx";   // 👈 para leer Excel
 import "./Auditoria.css";
 
 function Auditoria() {
@@ -36,6 +37,25 @@ function Auditoria() {
     navigate(`/gestion-servicios/${selectedDoctor.id}`, {
       state: { nombre: selectedDoctor.usuario }
     });
+  };
+
+  // 👇 Manejar carga masiva desde Excel
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      const data = new Uint8Array(evt.target.result);
+      const workbook = XLSX.read(data, { type: "array" });
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+      const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+      // Navegar a ventana carga-masiva con los datos
+      navigate("/carga-masiva", { state: { data: jsonData } });
+    };
+    reader.readAsArrayBuffer(file);
   };
 
   return (
@@ -91,11 +111,23 @@ function Auditoria() {
         <button className="gestion-btn" onClick={handleGestionarServicios}>
           Gestionar Servicios
         </button>
+
+        {/* Botón de carga masiva */}
+        <label className="gestion-btn">
+          Carga Masiva
+          <input
+            type="file"
+            accept=".xlsx, .xls"
+            style={{ display: "none" }}
+            onChange={handleFileUpload}
+          />
+        </label>
       </div>
     </div>
   );
 }
 
 export default Auditoria;
+
 
 

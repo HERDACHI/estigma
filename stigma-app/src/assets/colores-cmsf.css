@@ -19,7 +19,7 @@ body {
   border-radius: 8px;
 }
 
-.card-cmsf {
+.card-cmsf,.perfil-header {
   border: 1px solid var(--cmsf-verde);
   background-color: var(--cmsf-acento);
 }

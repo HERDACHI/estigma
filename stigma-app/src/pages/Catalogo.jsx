@@ -6,7 +6,7 @@ function Catalogo() {
     { id: 1, nombre: 'Tensiómetro Omron', costo: 300, imagen: '/assets/productos/tensiometro.png' },
     { id: 2, nombre: 'Glucómetro Vivachek', costo: 250, imagen: '/assets/productos/glucometro.png' },
     { id: 3, nombre: 'Tensiómetro', costo: 300, imagen: '/assets/productos/tensiometro.png' },
-    { id: 4, nombre: 'Glucómetro', costo: 250, imagen: '/assets/productos/glucometro.png' },
+    { id: 4, nombre: 'Glucómetro Tipo A', costo: 50, imagen: '/assets/productos/glucometro.png' },
   ];
 
   const handleCanjear = (producto) => {

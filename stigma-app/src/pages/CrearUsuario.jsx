@@ -93,7 +93,7 @@ function CrearUsuario() {
           <button
             type="button"
             className="cancelar-btn"
-            onClick={() => navigate("/gestion-usuarios")}
+            onClick={() => navigate("/usuarios")}
           >
             Cancelar
           </button>

@@ -42,7 +42,7 @@
 }
 
 .producto-costo {
-  color: var(--cmsf-verde-claro);
+  color: var(--cmsf-verde-oscuro);
   font-size: 1.1rem;
   margin-bottom: 1rem;
 }

@@ -30,6 +30,9 @@ function PerfilMedico({ medico }) {
           <p className="perfil-francoins">
             Francoins: <strong>{medico.francoins} FR</strong>
           </p>
+          <p><strong>Código:</strong> {medico.codigo}</p>
+          <p><strong>Correo:</strong> {medico.correo}</p>
+          <p><strong>Teléfono:</strong> {medico.telefono}</p>
         </div>
       </div>
 
