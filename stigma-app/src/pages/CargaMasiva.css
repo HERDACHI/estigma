@@ -1,4 +1,3 @@
-/* CargaMasiva.css */
 .carga-table {
   width: 100%;
   border-collapse: collapse;
@@ -19,6 +18,7 @@
   margin-top: 2rem;
 }
 
+/* Botón procesar y seleccionar archivo con mismo estilo */
 .procesar-btn {
   background-color: var(--cmsf-verde);
   color: var(--cmsf-blanco);
@@ -29,6 +29,10 @@
   border: none;
 }
 
+.procesar-btn:hover {
+  background-color: #256628;
+}
+
 .cancelar-btn {
   background-color: #ccc;
   color: #000;
@@ -37,4 +41,8 @@
   cursor: pointer;
   font-weight: bold;
   border: none;
+}
+
+.cancelar-btn:hover {
+  background-color: #999;
 }

@@ -39,6 +39,12 @@ function Auditoria() {
     });
   };
 
+  const handleCargaMasiva = () => {
+
+    // Navegar a ventana carga-masiva con los datos
+    navigate("/carga-masiva")
+  };
+
   // 👇 Manejar carga masiva desde Excel
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
@@ -111,8 +117,11 @@ function Auditoria() {
         <button className="gestion-btn" onClick={handleGestionarServicios}>
           Gestionar Servicios
         </button>
+        <button className="gestion-btn" onClick={handleCargaMasiva}>
+          Carga Masiva
+        </button>
 
-        {/* Botón de carga masiva */}
+        {/* Botón de carga masiva 
         <label className="gestion-btn">
           Carga Masiva
           <input
@@ -121,7 +130,7 @@ function Auditoria() {
             style={{ display: "none" }}
             onChange={handleFileUpload}
           />
-        </label>
+        </label> */}
       </div>
     </div>
   );
