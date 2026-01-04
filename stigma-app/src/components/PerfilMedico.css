@@ -61,3 +61,28 @@
   margin-top: 1.5rem;
   text-align: center;
 }
+
+
+
+.perfil-actions {
+  display: flex;              /* coloca los elementos en fila */
+  justify-content: center;    /* centra los botones horizontalmente */
+  gap: 1rem;                  /* separación uniforme entre botones */
+  margin-top: 1.5rem;         /* espacio respecto al bloque anterior */
+}
+
+.btn-cmsf {
+  background-color: var(--cmsf-verde);
+  color: var(--cmsf-blanco);
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;      /* quitar subrayado de <a> */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cmsf:hover {
+  background-color: #256628;  /* tono más oscuro al pasar el mouse */
+}
+

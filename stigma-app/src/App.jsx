@@ -14,6 +14,7 @@ import EditarProducto from './pages/EditarProducto';
 import GestionUsuarios from './pages/GestionUsuarios';
 import CrearUsuario from './pages/CrearUsuario';
 import CargaMasiva from './pages/CargaMasiva';
+import RankingDoctores from "./pages/RankingDoctores";
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
             <Route path="/usuarios" element={<GestionUsuarios />} />
             <Route path="/crear-usuario" element={<CrearUsuario />} /> 
             <Route path="/gestion-usuarios" element={<GestionUsuarios />} />      
-            <Route path="/carga-masiva" element={<CargaMasiva />} />       
+            <Route path="/carga-masiva" element={<CargaMasiva />} />   
+            <Route path="/ranking-doctores" element={<RankingDoctores />} />    
 
           </Routes>
         </main>

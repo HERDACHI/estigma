@@ -11,6 +11,9 @@ function Perfil() {
     hospitalizaciones: 16,
     cirugias: 8,
     foto: '/assets/medicos/antonio.png',
+    codigo: 'V12345678',
+    correo: 'medico1@correo.com',
+    telefono: '0414-1332112',
   };
 
   return <PerfilMedico medico={medicoEjemplo} />;

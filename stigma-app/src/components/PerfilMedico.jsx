@@ -49,9 +49,10 @@ function PerfilMedico({ medico }) {
         <a href="/catalogo" className="btn-cmsf">
           Ver catálogo
         </a>
-        <a href="/catalogo" className="btn-cmsf">
+        <a href="/ranking-doctores" className="btn-cmsf">
           Ver Ranking
         </a>
+    
       </div>
     </div>
   );
