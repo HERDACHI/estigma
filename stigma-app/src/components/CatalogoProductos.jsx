@@ -1,4 +1,3 @@
-// src/pages/CatalogoProductos.jsx
 import React, { useState } from 'react';
 import './CatalogoProductos.css';
 import '../assets/colores-cmsf.css';

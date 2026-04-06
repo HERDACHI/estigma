@@ -1,3 +1,43 @@
+
+import React, { useEffect, useState } from "react";
+import PerfilMedico from "../components/PerfilMedico";
+
+function Perfil() {
+  const [medico, setMedico] = useState(null);
+
+  useEffect(() => {
+    const cargarPerfil = async () => {
+      try {
+        const id = localStorage.getItem("idUsuario");
+
+        if (!id) {
+          alert("No se encontró el usuario logueado");
+          return;
+        }
+
+        const response = await fetch(`http://localhost:3001/api/doctores/${id}`);
+        const data = await response.json();
+
+        setMedico(data);
+      } catch (error) {
+        console.error("Error cargando perfil:", error);
+        alert("Error obteniendo datos del servidor");
+      }
+    };
+
+    cargarPerfil();
+  }, []);
+
+  if (!medico) {
+    return <p>Cargando perfil...</p>;
+  }
+
+  return <PerfilMedico medico={medico} />;
+}
+
+export default Perfil;
+
+/*
 import React from 'react';
 import PerfilMedico from '../components/PerfilMedico';
 
@@ -19,4 +59,4 @@ function Perfil() {
   return <PerfilMedico medico={medicoEjemplo} />;
 }
 
-export default Perfil;
+export default Perfil;  */

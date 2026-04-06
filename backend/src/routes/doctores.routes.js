@@ -1,9 +1,10 @@
 import express from "express";
-import { obtenerRanking } from "../controllers/doctores.controller.js";
+import { obtenerRanking, obtenerDoctorPorId } from "../controllers/doctores.controller.js";
 
 const router = express.Router();
 
 router.get("/ranking", obtenerRanking);
+router.get("/:id", obtenerDoctorPorId);
 
 export default router;
 

@@ -2,23 +2,31 @@
 import React from "react";
 import LoginForm from "../components/LoginForm";
 
-const usuarios = [
-  { usuario: "admin", password: "admin", tipo: "administrador" },
-  { usuario: "doctor", password: "123", tipo: "doctor" },
-  { usuario: "auditor", password: "123", tipo: "auditor" },
-];
-
 function Login() {
-  const handleLogin = (credentials) => {
-    const usuarioValido = usuarios.find(
-      (u) => u.usuario === credentials.usuario && u.password === credentials.password
-    );
+  const handleLogin = async (credentials) => {
+    try {
+      // 1. Obtener todos los usuarios desde el backend
+      const response = await fetch("http://localhost:3001/api/usuarios");
+      const usuarios = await response.json();
 
-    if (usuarioValido) {
-      // Guardar tipo en localStorage
+      // 2. Buscar coincidencia
+      const usuarioValido = usuarios.find(
+        (u) =>
+          u.usuario === credentials.usuario &&
+          u.password === credentials.password
+      );
+
+      if (!usuarioValido) {
+        alert("Usuario o contraseña incorrectos");
+        return;
+      }
+
+      // 3. Guardar tipo y id en localStorage
       localStorage.setItem("tipoUsuario", usuarioValido.tipo);
+      localStorage.setItem("idUsuario", usuarioValido.doctor_id);
 
-      // Redirigir según tipo
+
+      // 4. Redirigir según tipo
       switch (usuarioValido.tipo) {
         case "administrador":
           window.location.href = "/usuarios";
@@ -32,8 +40,9 @@ function Login() {
         default:
           window.location.href = "/perfil";
       }
-    } else {
-      alert("Usuario o contraseña incorrectos");
+    } catch (error) {
+      console.error("Error en login:", error);
+      alert("Error conectando con el servidor");
     }
   };
 
@@ -41,4 +50,3 @@ function Login() {
 }
 
 export default Login;
-

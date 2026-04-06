@@ -1,4 +1,75 @@
-// src/pages/RankingDoctores.jsx
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./RankingDoctores.css"; // 👈 Asegúrate de que este import exista
+
+function RankingDoctores() {
+  const [ranking, setRanking] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const cargarRanking = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/api/doctores/ranking");
+        const data = await response.json();
+        setRanking(data);
+      } catch (error) {
+        console.error("Error cargando ranking:", error);
+        alert("Error obteniendo datos del servidor");
+      }
+    };
+
+    cargarRanking();
+  }, []);
+
+  return (
+    <div className="page-card">
+      <h2>Ranking de Doctores</h2>
+
+      {/* 👇 ESTA ESTRUCTURA NO SE TOCA */}
+      <div className="table-container">
+        <table className="ranking-table">
+          <thead>
+            <tr>
+              <th>Posición</th>
+              <th>Doctor</th>
+              <th>Francois</th>
+              <th>Hospitalizaciones</th>
+              <th>Consultas</th>
+              <th>Cirugías</th>
+              <th>Total_Servicios</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {ranking.map((doc, idx) => (
+              <tr key={doc.id}>
+                <td>{idx + 1}</td>
+                <td>{doc.nombre}</td>
+                <td>{doc.francoins}</td>
+                <td>{doc.hospitalizaciones}</td>
+                <td>{doc.consultas}</td>
+                <td>{doc.cirugias}</td>
+                <td>{doc.totalServicios}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="form-actions">
+        <button className="cancelar-btn" onClick={() => navigate(-1)}>
+          Volver
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default RankingDoctores;
+
+
+
+/*
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./RankingDoctores.css";
@@ -8,8 +79,8 @@ function RankingDoctores() {
 
   // 👇 Datos simulados (JSON/arreglo)
   const doctores = [
-    { id: 1, usuario: "Dr. Pérez", francois: 120, hospitalizaciones: 5, consultas: 20, cirugias: 2 },
-    { id: 2, usuario: "Dra. Gómez", francois: 80, hospitalizaciones: 3, consultas: 15, cirugias: 1 },
+    { id: 1, usuario: "Dr. Ernesto Pérez", francois: 120, hospitalizaciones: 5, consultas: 20, cirugias: 2 },
+    { id: 2, usuario: "Dra. Anastasia Aurelina Gómez Rodriguez", francois: 80, hospitalizaciones: 3, consultas: 15, cirugias: 1 },
     { id: 3, usuario: "Dr. López", francois: 150, hospitalizaciones: 7, consultas: 25, cirugias: 4 },
     { id: 4, usuario: "Dr. Ramírez", francois: 60, hospitalizaciones: 2, consultas: 10, cirugias: 0 },
     { id: 5, usuario: "Dra. Torres", francois: 200, hospitalizaciones: 8, consultas: 30, cirugias: 5 },
@@ -63,4 +134,5 @@ function RankingDoctores() {
   );
 }
 
-export default RankingDoctores;
+export default RankingDoctores; 
+ */
