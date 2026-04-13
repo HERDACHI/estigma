@@ -2,18 +2,13 @@ import React, { useState } from 'react';
 import './CatalogoProductos.css';
 import '../assets/colores-cmsf.css';
 
-function CatalogoProductos({ productos, onCanjear }) {
+function CatalogoProductos({ productos, doctorFrancoins, onCanjear }) {
   const [filtro, setFiltro] = useState("todos");
 
-  // Filtrar productos según el rango seleccionado
   const productosFiltrados = productos.filter((p) => {
-    if (filtro === "20-100") {
-      return p.costo >= 20 && p.costo <= 100;
-    }
-    if (filtro === "100-300") {
-      return p.costo >= 100 && p.costo <= 300;
-    }
-    return true; // "todos"
+    if (filtro === "20-100") return p.costo >= 20 && p.costo <= 100;
+    if (filtro === "100-300") return p.costo >= 100 && p.costo <= 300;
+    return true;
   });
 
   return (
@@ -32,6 +27,7 @@ function CatalogoProductos({ productos, onCanjear }) {
           />
           Todos
         </label>
+
         <label>
           <input
             type="radio"
@@ -42,6 +38,7 @@ function CatalogoProductos({ productos, onCanjear }) {
           />
           20 - 100 FR
         </label>
+
         <label>
           <input
             type="radio"
@@ -54,29 +51,41 @@ function CatalogoProductos({ productos, onCanjear }) {
         </label>
       </div>
 
-      {/* Grid de productos */}
+      {/* Grid */}
       <div className="catalogo-grid">
-        {productosFiltrados.map((producto) => (
-          <div key={producto.id} className="producto-card card-cmsf">
-            <img
-              src={producto.imagen}
-              alt={producto.nombre}
-              className="producto-imagen"
-            />
-            <h3 className="producto-nombre">{producto.nombre}</h3>
-            <p className="producto-costo">{producto.costo} FR</p>
-            <button
-              className="btn-cmsf"
-              onClick={() => onCanjear(producto)}
-            >
-              Canjear
-            </button>
-          </div>
-        ))}
+        {productosFiltrados.map((producto) => {
+          const saldoInsuficiente = doctorFrancoins < producto.costo;
+
+          return (
+            <div key={producto.id} className="producto-card card-cmsf">
+              <img
+                src={producto.imagen}
+                alt={producto.nombre}
+                className="producto-imagen"
+              />
+
+              <h3 className="producto-nombre">{producto.nombre}</h3>
+              <p className="producto-costo">{producto.costo} FR</p>
+
+              <button
+                className="btn-cmsf"
+                onClick={() => onCanjear(producto)}
+                disabled={!producto.activo || saldoInsuficiente}
+              >
+                {!producto.activo
+                  ? "No disponible"
+                  : saldoInsuficiente
+                    ? "Saldo insuficiente"
+                    : "Canjear"}
+              </button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 }
 
 export default CatalogoProductos;
+
 

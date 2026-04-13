@@ -1,21 +1,70 @@
-import React from 'react';
-import CatalogoProductos from '../components/CatalogoProductos';
+
+import React, { useEffect, useState } from "react";
+import CatalogoProductos from "../components/CatalogoProductos";
 
 function Catalogo() {
-  const productosEjemplo = [
-    { id: 1, nombre: 'Tensiómetro Omron', costo: 300, imagen: '/assets/productos/tensiometro.png' },
-    { id: 2, nombre: 'Glucómetro Vivachek', costo: 250, imagen: '/assets/productos/glucometro.png' },
-    { id: 3, nombre: 'Tensiómetro', costo: 300, imagen: '/assets/productos/tensiometro.png' },
-    { id: 4, nombre: 'Glucómetro Tipo A', costo: 50, imagen: '/assets/productos/glucometro.png' },
-  ];
+  const [productos, setProductos] = useState([]);
+  const [doctor, setDoctor] = useState(null);
 
-  const handleCanjear = (producto) => {
-    console.log('Producto canjeado:', producto);
-    // Aquí se conecta con el backend para validar saldo y registrar el canje
-    window.location.href = '/canje-exitoso';
+  const doctorId = localStorage.getItem("idUsuario");
+
+  // Cargar doctor
+  useEffect(() => {
+    fetch(`http://localhost:3001/api/doctores/${doctorId}`)
+      .then((res) => res.json())
+      .then((data) => setDoctor(data))
+      .catch((err) => console.error("Error cargando doctor:", err));
+  }, [doctorId]);
+
+  // Cargar productos
+  useEffect(() => {
+    fetch("http://localhost:3001/api/productos")
+      .then((res) => res.json())
+      .then((data) => setProductos(data))
+      .catch((err) => console.error("Error cargando catálogo:", err));
+  }, []);
+
+  // Loading
+  if (!doctor || productos.length === 0) {
+    return <p>Cargando catálogo...</p>;
+  }
+
+  // Canje real
+  const handleCanjear = async (producto) => {
+    const res = await fetch("http://localhost:3001/api/canje", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        doctor_id: doctorId,
+        producto_id: producto.id,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.mensaje);
+      return;
+    }
+
+    alert("Canje exitoso");
+    window.location.href = "/canje-exitoso";
   };
 
-  return <CatalogoProductos productos={productosEjemplo} onCanjear={handleCanjear} />;
+  return (
+    <CatalogoProductos
+      productos={productos}
+      doctorFrancoins={doctor.francoins}
+      onCanjear={handleCanjear}
+    />
+  );
 }
 
 export default Catalogo;
+
+
+
+
+
+
+

@@ -6,6 +6,7 @@ import doctoresRoutes from "./routes/doctores.routes.js";
 import productosRoutes from "./routes/productos.routes.js";
 import usuariosRoutes from "./routes/usuarios.routes.js";
 import auditoriaRoutes from "./routes/auditoria.routes.js";
+import canjeRoutes from "./routes/canje.routes.js";
 
 
 const app = express();
@@ -18,6 +19,8 @@ app.use("/api/doctores", doctoresRoutes);
 app.use("/api/productos", productosRoutes);
 app.use("/api/usuarios", usuariosRoutes);
 app.use("/api/auditoria", auditoriaRoutes);
+app.use("/api/canje", canjeRoutes);
+
 
 app.listen(3001, () => {
   console.log("Servidor backend corriendo en http://localhost:3001");
