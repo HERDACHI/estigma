@@ -1,8 +1,10 @@
 import express from "express";
+
 import {
   obtenerAuditoria,
   obtenerAuditoriaPorId,
-  crearAuditoria
+  crearAuditoria,
+  actualizarServiciosYFrancoins
 } from "../controllers/auditoria.controller.js";
 
 const router = express.Router();
@@ -16,7 +18,17 @@ router.get("/:id", obtenerAuditoriaPorId);
 // Crear un registro de auditoría
 router.post("/", crearAuditoria);
 
+// Actualizar servicios medicos ó Francoins
+router.put("/actualizar-servicios", actualizarServiciosYFrancoins);
+
 export default router;
+
+
+
+
+
+
+
 
 
 
