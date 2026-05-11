@@ -1,4 +1,8 @@
+// src/routes/usuarios.routes.js
 import express from "express";
+import multer from "multer";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import {
   obtenerUsuarios,
@@ -10,18 +14,27 @@ import {
 
 const router = express.Router();
 
+// Necesario para rutas absolutas
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// GET → obtener todos los usuarios
-router.get("/", obtenerUsuarios);
+// Carpeta para fotos de usuarios
+const uploadPath = path.join(__dirname, "../../../stigma-app/public/assets/usuarios");
 
-// POST → crear usuario
-router.post("/", crearUsuario);
+// Multer ANÁLOGO a productos
+const storage = multer.diskStorage({
+  destination: uploadPath,
+  filename: (req, file, cb) => {
+    const cleanName = file.originalname.replace(/\s+/g, "_");
+    cb(null, Date.now() + "-" + cleanName);
+  }
+});
 
-// PUT → actualizar usuario
-router.put("/:id", actualizarUsuario);
+const upload = multer({ storage });
 
-// DELETE → eliminar usuario
-router.delete("/:id", eliminarUsuario);
+// =======================
+// RUTAS DE USUARIOS
+// =======================
 
 // GET → obtener todos los usuarios
 router.get("/", obtenerUsuarios);
@@ -29,15 +42,14 @@ router.get("/", obtenerUsuarios);
 // GET → obtener un usuario por ID
 router.get("/:id", obtenerUsuarioPorId);
 
-// POST → crear usuario
-router.post("/", crearUsuario);
+// POST → crear usuario con foto
+router.post("/", upload.single("foto"), crearUsuario);
 
-// PUT → actualizar usuario
-router.put("/:id", actualizarUsuario);
+// PUT → actualizar usuario con foto opcional
+router.put("/:id", upload.single("foto"), actualizarUsuario);
 
 // DELETE → eliminar usuario
 router.delete("/:id", eliminarUsuario);
 
-
-
 export default router;
+
