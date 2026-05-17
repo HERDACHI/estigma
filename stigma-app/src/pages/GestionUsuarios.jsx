@@ -61,6 +61,7 @@ function GestionUsuarios() {
             <th>Nombre / Usuario</th>
             <th>Tipo</th>
             <th>Doctor ID</th>
+            <th>Editar</th> {/* ← NUEVA COLUMNA */}
           </tr>
         </thead>
 
@@ -71,6 +72,15 @@ function GestionUsuarios() {
               <td>{u.nombre}</td>
               <td>{u.tipo}</td>
               <td>{u.doctor_id || "-"}</td>
+
+              {/* RADIO BUTTON PARA EDITAR */}
+              <td style={{ textAlign: "center" }}>
+                <input
+                  type="radio"
+                  name="editarUsuario"
+                  onChange={() => navigate(`/editar-usuario/${u.id}`)}
+                />
+              </td>
             </tr>
           ))}
         </tbody>
@@ -87,6 +97,3 @@ function GestionUsuarios() {
 }
 
 export default GestionUsuarios;
-
-
-

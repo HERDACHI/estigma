@@ -15,6 +15,8 @@ import GestionUsuarios from './pages/GestionUsuarios';
 import CrearUsuario from './pages/CrearUsuario';
 import CargaMasiva from './pages/CargaMasiva';
 import RankingDoctores from "./pages/RankingDoctores";
+import EditarUsuario from "./pages/EditarUsuario";
+
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
             <Route path="/gestion-usuarios" element={<GestionUsuarios />} />      
             <Route path="/carga-masiva" element={<CargaMasiva />} />   
             <Route path="/ranking-doctores" element={<RankingDoctores />} />    
+            <Route path="/editar-usuario/:id" element={<EditarUsuario />} />
+          
 
           </Routes>
         </main>

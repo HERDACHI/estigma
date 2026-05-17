@@ -106,7 +106,19 @@ export const crearUsuario_old = async (req, res) => {
 export const actualizarUsuario = async (req, res) => {
   try {
     const usuario_id = req.params.id;
-    const { nombre, cedula, tipo, activo } = req.body;
+
+    let {
+      usuario,
+      password,
+      tipo,
+      nombre,
+      especialidad,
+      correo,
+      telefono
+    } = req.body;
+
+    // Normalizar tipo
+    const tipoNormalizado = (tipo || "").toLowerCase().trim();
 
     // Obtener usuario actual
     const [[usuarioActual]] = await db.query(
@@ -118,58 +130,119 @@ export const actualizarUsuario = async (req, res) => {
       return res.status(404).json({ mensaje: "Usuario no encontrado" });
     }
 
-    // Si subieron nueva foto → generar ruta
-    let nuevaFoto = usuarioActual.foto;
+    // FOTO
+    let nuevaFoto = null;
 
     if (req.file) {
       nuevaFoto = `/assets/usuarios/${req.file.filename}`;
+    }
 
-      // Eliminar foto anterior si existía
-      if (usuarioActual.foto) {
-        const rutaAnterior = path.join(
-          process.cwd(),
-          "stigma-app/public",
-          usuarioActual.foto
+    // ============================
+    // ACTUALIZAR TABLA USUARIOS
+    // ============================
+    const camposUsuario = [];
+    const valoresUsuario = [];
+
+    if (usuario) {
+      camposUsuario.push("usuario = ?");
+      valoresUsuario.push(usuario);
+    }
+
+    if (password) {
+      camposUsuario.push("password = ?");
+      valoresUsuario.push(password);
+    }
+
+    camposUsuario.push("tipo = ?");
+    valoresUsuario.push(tipoNormalizado);
+
+    camposUsuario.push("doctor_id = ?");
+    valoresUsuario.push(tipoNormalizado === "doctor" ? usuarioActual.doctor_id : null);
+
+    valoresUsuario.push(usuario_id);
+
+    await db.query(
+      `UPDATE usuarios SET ${camposUsuario.join(", ")} WHERE id = ?`,
+      valoresUsuario
+    );
+
+    // ============================
+    // SI ES DOCTOR → ACTUALIZAR TABLA DOCTORES
+    // ============================
+    if (tipoNormalizado === "doctor") {
+      // Si no existe doctor_id → crear doctor
+      if (!usuarioActual.doctor_id) {
+        const [doctorResult] = await db.query(
+          `INSERT INTO doctores (nombre, especialidad, correo, telefono, foto, francoins)
+           VALUES (?, ?, ?, ?, ?, 0)`,
+          [nombre, especialidad, correo, telefono, nuevaFoto]
         );
 
-        if (fs.existsSync(rutaAnterior)) {
-          fs.unlinkSync(rutaAnterior);
+        // Actualizar doctor_id en usuarios
+        await db.query(
+          "UPDATE usuarios SET doctor_id = ? WHERE id = ?",
+          [doctorResult.insertId, usuario_id]
+        );
+      } else {
+        // Actualizar doctor existente
+        const camposDoctor = [];
+        const valoresDoctor = [];
+
+        if (nombre) {
+          camposDoctor.push("nombre = ?");
+          valoresDoctor.push(nombre);
         }
+
+        if (especialidad) {
+          camposDoctor.push("especialidad = ?");
+          valoresDoctor.push(especialidad);
+        }
+
+        if (correo) {
+          camposDoctor.push("correo = ?");
+          valoresDoctor.push(correo);
+        }
+
+        if (telefono) {
+          camposDoctor.push("telefono = ?");
+          valoresDoctor.push(telefono);
+        }
+
+        if (nuevaFoto) {
+          camposDoctor.push("foto = ?");
+          valoresDoctor.push(nuevaFoto);
+        }
+
+        valoresDoctor.push(usuarioActual.doctor_id);
+
+        await db.query(
+          `UPDATE doctores SET ${camposDoctor.join(", ")} WHERE id = ?`,
+          valoresDoctor
+        );
       }
     }
 
-    // Actualizar usuario
-    await db.query(
-      `UPDATE usuarios
-       SET nombre = ?, cedula = ?, tipo = ?, activo = ?, foto = ?
-       WHERE id = ?`,
-      [nombre, cedula, tipo, activo, nuevaFoto, usuario_id]
-    );
+    // ============================
+    // SI YA NO ES DOCTOR → ELIMINAR REGISTRO EN DOCTORES
+    // ============================
+    if (tipoNormalizado !== "doctor" && usuarioActual.doctor_id) {
+      await db.query("DELETE FROM doctores WHERE id = ?", [
+        usuarioActual.doctor_id,
+      ]);
 
-    // Si es doctor y no existe → crearlo
-    if (tipo === "Doctor") {
-      await db.query(
-        `INSERT IGNORE INTO doctores (id, nombre, francoins)
-         VALUES (?, ?, 0)`,
-        [usuario_id, nombre]
-      );
+      await db.query("UPDATE usuarios SET doctor_id = NULL WHERE id = ?", [
+        usuario_id,
+      ]);
     }
 
-    // Si dejó de ser doctor → eliminarlo de doctores
-    if (tipo !== "Doctor") {
-      await db.query("DELETE FROM doctores WHERE id = ?", [usuario_id]);
-    }
-
-    res.json({
-      mensaje: "Usuario actualizado correctamente",
-      foto: nuevaFoto
-    });
+    res.json({ mensaje: "Usuario actualizado correctamente" });
 
   } catch (error) {
     console.error("ERROR ACTUALIZANDO USUARIO:", error);
     res.status(500).json({ mensaje: "Error actualizando usuario" });
   }
 };
+
 
 // Eliminar usuario
 export const eliminarUsuario = async (req, res) => {
