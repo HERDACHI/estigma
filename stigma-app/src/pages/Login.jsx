@@ -1,5 +1,63 @@
+
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import LoginForm from "../components/LoginForm";
+
+function Login() {
+  const { login } = useContext(AuthContext);
+
+  const handleLogin = async (credentials) => {
+    try {
+      // Llamar al backend REAL de login
+      const response = await fetch("http://5.252.53.211:3001/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(credentials),
+      });
+
+      const data = await response.json();
+
+      if (!data.ok) {
+        alert("Usuario o contraseña incorrectos");
+        return;
+      }
+
+      // Guardar sesión global en AuthContext
+      login(data.usuario);
+
+      // Guardar datos adicionales que usa tu sistema
+      localStorage.setItem("tipoUsuario", data.usuario.tipo);
+      localStorage.setItem("idUsuario", data.usuario.doctor_id);
+
+      // Redirigir según tipo
+      switch (data.usuario.tipo) {
+        case "administrador":
+          window.location.href = "/usuarios";
+          break;
+        case "doctor":
+          window.location.href = "/perfil";
+          break;
+        case "auditor":
+          window.location.href = "/auditoria";
+          break;
+        default:
+          window.location.href = "/perfil";
+      }
+
+    } catch (error) {
+      console.error("Error en login:", error);
+      alert("Error conectando con el servidor");
+    }
+  };
+
+  return <LoginForm onLogin={handleLogin} />;
+}
+
+export default Login;
+
+
 // src/pages/Login.jsx
-import React from "react";
+/*import React from "react";
 import LoginForm from "../components/LoginForm";
 
 function Login() {
@@ -49,4 +107,7 @@ function Login() {
   return <LoginForm onLogin={handleLogin} />;
 }
 
-export default Login;
+export default Login; */
+
+
+
