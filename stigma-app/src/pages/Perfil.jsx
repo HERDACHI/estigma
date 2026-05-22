@@ -15,7 +15,7 @@ function Perfil() {
           return;
         }
 
-        const response = await fetch(`http://localhost:3001/api/doctores/${id}`);
+        const response = await fetch(`http://5.252.53.211:3001/api/doctores/${id}`);
         const data = await response.json();
 
         setMedico(data);

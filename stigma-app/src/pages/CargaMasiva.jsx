@@ -45,7 +45,7 @@ function CargaMasiva() {
     setProcesando(true);
 
     try {
-      const res = await fetch("http://localhost:3001/api/auditoria/carga-masiva", {
+      const res = await fetch("http://5.252.53.211:3001/api/auditoria/carga-masiva", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

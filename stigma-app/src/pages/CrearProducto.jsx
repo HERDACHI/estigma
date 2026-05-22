@@ -41,7 +41,7 @@ function CrearProducto() {
         formData.append("imagen", form.foto);
       }
 
-      const res = await fetch("http://localhost:3001/api/productos", {
+      const res = await fetch("http://5.252.53.211:3001/api/productos", {
         method: "POST",
         body: formData,
       });

@@ -30,7 +30,7 @@ function EditarUsuario() {
     const cargarDatos = async () => {
       try {
         // 1. Obtener usuario
-        const resUser = await fetch(`http://localhost:3001/api/usuarios/${id}`);
+        const resUser = await fetch(`http://5.252.53.211:3001/api/usuarios/${id}`);
         const user = await resUser.json();
 
         if (!user) {
@@ -44,7 +44,7 @@ function EditarUsuario() {
         // 2. Si es doctor → cargar datos del doctor
         if (user.tipo === "doctor" && user.doctor_id) {
           const resDoctor = await fetch(
-            `http://localhost:3001/api/doctores/${user.doctor_id}`
+            `http://5.252.53.211:3001/api/doctores/${user.doctor_id}`
           );
           doctorData = await resDoctor.json();
         }
@@ -63,7 +63,7 @@ function EditarUsuario() {
         });
 
         if (doctorData.foto) {
-          setPreview(`http://localhost:3001${doctorData.foto}`);
+          setPreview(`http://5.252.53.211:3001${doctorData.foto}`);
         }
 
       } catch (error) {
@@ -114,7 +114,7 @@ function EditarUsuario() {
         if (form.foto) fd.append("foto", form.foto);
       }
 
-      const res = await fetch(`http://localhost:3001/api/usuarios/${id}`, {
+      const res = await fetch(`http://5.252.53.211:3001/api/usuarios/${id}`, {
         method: "PUT",
         body: fd,
       });

@@ -25,7 +25,7 @@ function GestionFrancois() {
     }
 
     try {
-      const res = await fetch("http://localhost:3001/api/auditoria/actualizar-servicios", {
+      const res = await fetch("http://5.252.53.211:3001/api/auditoria/actualizar-servicios", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

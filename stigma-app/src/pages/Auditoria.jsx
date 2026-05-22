@@ -14,7 +14,7 @@ function Auditoria() {
   useEffect(() => {
     const cargarEstatusServicios = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/auditoria/estatus-servicios");
+        const res = await fetch("http://5.252.53.211:3001/api/auditoria/estatus-servicios");
         const data = await res.json();
         setRegistros(data);
       } catch (error) {
@@ -161,7 +161,7 @@ function Auditoria() {
   useEffect(() => {
     const cargarAuditoria = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/auditoria");
+        const res = await fetch("http://5.252.53.211:3001/api/auditoria");
         const data = await res.json();
         setRegistros(data);
       } catch (error) {

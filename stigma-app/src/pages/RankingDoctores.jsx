@@ -9,7 +9,7 @@ function RankingDoctores() {
   useEffect(() => {
     const cargarRanking = async () => {
       try {
-        const response = await fetch("http://localhost:3001/api/doctores/ranking");
+        const response = await fetch("http://5.252.53.211:3001/api/doctores/ranking");
         const data = await response.json();
         setRanking(data);
       } catch (error) {
