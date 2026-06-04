@@ -6,7 +6,7 @@ function Login() {
   const handleLogin = async (credentials) => {
     try {
       // 1. Obtener todos los usuarios desde el backend
-      const response = await fetch("http://localhost:3001/api/usuarios");
+      const response = await fetch("http://5.252.53.211:3001/api/usuarios");
       const usuarios = await response.json();
 
       // 2. Buscar coincidencia

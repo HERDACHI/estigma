@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
 
 import authRoutes from "./routes/auth.routes.js";
 import doctoresRoutes from "./routes/doctores.routes.js";
@@ -23,11 +25,8 @@ app.use("/api/canje", canjeRoutes);
 
 
 app.listen(3001, () => {
-  console.log("Servidor backend corriendo en http://localhost:3001");
+  console.log("Servidor backend corriendo en " + process.env.DB_HOST+ ":" + 3001);
 });
-
-
-
 
 
 

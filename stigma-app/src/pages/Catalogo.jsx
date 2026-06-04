@@ -10,7 +10,7 @@ function Catalogo() {
 
   // Cargar doctor
   useEffect(() => {
-    fetch(`http://localhost:3001/api/doctores/${doctorId}`)
+    fetch(`http://5.252.53.211:3001/api/doctores/${doctorId}`)
       .then((res) => res.json())
       .then((data) => setDoctor(data))
       .catch((err) => console.error("Error cargando doctor:", err));
@@ -18,7 +18,7 @@ function Catalogo() {
 
   // Cargar productos
   useEffect(() => {
-    fetch("http://localhost:3001/api/productos")
+    fetch("http://5.252.53.211:3001/api/productos")
       .then((res) => res.json())
       .then((data) => setProductos(data))
       .catch((err) => console.error("Error cargando catálogo:", err));
@@ -31,7 +31,7 @@ function Catalogo() {
 
   // Canje real
   const handleCanjear = async (producto) => {
-    const res = await fetch("http://localhost:3001/api/canje", {
+    const res = await fetch("http://5.252.53.211:3001/api/canje", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -11,7 +11,7 @@ function GestionUsuarios() {
   useEffect(() => {
     const cargarUsuarios = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/usuarios");
+        const res = await fetch("http://5.252.53.211:3001/api/usuarios");
         const data = await res.json();
 
         // Para cada usuario tipo doctor → buscar su nombre real
@@ -20,7 +20,7 @@ function GestionUsuarios() {
             if (u.tipo === "doctor" && u.doctor_id) {
               try {
                 const resDoctor = await fetch(
-                  `http://localhost:3001/api/doctores/${u.doctor_id}`
+                  `http://5.252.53.211:3001/api/doctores/${u.doctor_id}`
                 );
                 const doctor = await resDoctor.json();
 

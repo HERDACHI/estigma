@@ -8,7 +8,7 @@ function Productos() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/productos")
+    fetch("http://5.252.53.211:3001/api/productos")
       .then((res) => res.json())
       .then((data) => setProductos(data))
       .catch((err) => console.error("Error cargando productos:", err));

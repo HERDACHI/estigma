@@ -23,7 +23,7 @@ function LoginForm({ onLogin }) {
         className="login-logo"
       />
 
-      <h2>Acceso a Stigma</h2>
+      <h2>Acceso a Estigma</h2>
 
       <form className="login-form" onSubmit={handleSubmit}>
         <input

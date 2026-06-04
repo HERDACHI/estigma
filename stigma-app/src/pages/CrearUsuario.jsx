@@ -69,7 +69,7 @@ function CrearUsuario() {
         if (form.foto) fd.append("foto", form.foto);
       }
 
-      const res = await fetch("http://localhost:3001/api/usuarios", {
+      const res = await fetch("http://5.252.53.211:3001/api/usuarios", {
         method: "POST",
         body: fd,
       });

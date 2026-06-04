@@ -1,0 +1,7 @@
+Borrar app innecesarias                 pm2 delete app
+Iniciar backend     	                pm2 start src/server.js --name estigma-backend
+Iniciar frontend (SPA)	                pm2 serve dist 5000 --name stigma-app --spa
+Reiniciar backend con variables nuevas	pm2 restart estigma-backend --update-env
+Listar procesos activos	                pm2 list
+Habilitar inicio automático (reinicio)  pm2 startup
+Guardar configuración de procesos       pm2 save
